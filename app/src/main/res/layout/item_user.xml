@@ -13,7 +13,7 @@
         android:layout_height="100dp"
         android:layout_marginEnd="16dp"
         tools:src="@android:color/black"
-        app:civ_border_width="3dp"
+        app:civ_border_width="4dp"
         app:civ_border_color="@color/colorAccent"/>
 
     <LinearLayout
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:maxLines="12"
             tools:text="@string/company"
             android:textColor="@color/TextSecondary"/>
     </LinearLayout>

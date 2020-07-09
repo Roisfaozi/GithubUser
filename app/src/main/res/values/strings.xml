@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">Github User</string>
-    <string name="github_user">Github User</string>
     <string name="user_name">Nama User</string>
     <string name="company">Company</string>
-    <string name="detail_activity">User\'\s Detail</string>
 
     <string-array name="username">
         <item>JakeWharton</item>

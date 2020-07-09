@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var followers: Array<String>
     private lateinit var following: Array<String>
     private lateinit var avatar: TypedArray
+
     private lateinit var userAdapter: UserAdapter
 
     private var users = arrayListOf<User>()
@@ -27,24 +28,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val listUser: RecyclerView = findViewById(R.id.rv_user)
+        val recyclerView: RecyclerView = findViewById(R.id.rv_user)
         userAdapter = UserAdapter()
 
-        listUser.adapter = userAdapter
+        recyclerView.adapter = userAdapter
 
         prepare()
         addItem()
+        showRecyclerView()
     }
 
     private fun prepare() {
         userName = resources.getStringArray(R.array.username)
         name = resources.getStringArray(R.array.name)
-        avatar = resources.obtainTypedArray(R.array.avatar)
         location = resources.getStringArray(R.array.location)
         repository = resources.getStringArray(R.array.repository)
         company = resources.getStringArray(R.array.company)
         followers = resources.getStringArray(R.array.followers)
         following = resources.getStringArray(R.array.following)
+        avatar = resources.obtainTypedArray(R.array.avatar)
     }
 
     private fun addItem() {
