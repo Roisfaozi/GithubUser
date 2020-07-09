@@ -17,14 +17,14 @@ class DetailActivity : AppCompatActivity() {
 
         val user = intent.getParcelableExtra<User>("user")
 
-        img_avatar.setImageResource(user.avatar)
-        tv_item_name.text = user?.name
         username.text = user?.userName
-        company.text = user?.company
+        tv_item_name.text = user?.name
         location.text = user?.location
+        repository.text = user?.repository
+        company.text = user?.company
         followers.text = user?.followers
         followings.text = user?.following
-        repository.text = user?.repository
+        img_avatar.setImageResource(user.avatar)
 
 
     }

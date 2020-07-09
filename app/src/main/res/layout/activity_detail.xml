@@ -56,27 +56,28 @@
            android:layout_gravity="center">
 
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="97dp"
                android:layout_height="match_parent"
                android:text="Following"
                android:textSize="17sp"
-               android:textColor="@color/TextPrimary"/>
+               android:textColor="@color/TextPrimary"
+               android:textAlignment="center"/>
 
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="97dp"
                android:layout_height="match_parent"
                android:text="Repository"
                android:textSize="17sp"
                android:textColor="@color/TextPrimary"
-               android:paddingStart="16dp"/>
+               android:textAlignment="center"/>
 
            <TextView
-               android:layout_width="wrap_content"
+               android:layout_width="97dp"
                android:layout_height="match_parent"
                android:text="Followers"
                android:textSize="17sp"
                android:textColor="@color/TextPrimary"
-               android:paddingStart="16dp"/>
+               android:textAlignment="center"/>
 
        </LinearLayout>
 
@@ -125,9 +126,12 @@
         android:text="Company"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:maxLines="2"
         android:textColor="@color/TextPrimary"
         android:textAlignment="center"
         android:paddingBottom="80dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:layout_alignParentBottom="true"/>
     <TextView
         android:id="@+id/location"

@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="12"
+            android:maxLines="2"
             tools:text="@string/company"
             android:textColor="@color/TextSecondary"/>
     </LinearLayout>

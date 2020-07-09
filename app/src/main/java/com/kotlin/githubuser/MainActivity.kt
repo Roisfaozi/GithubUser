@@ -39,27 +39,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepare() {
+
         userName = resources.getStringArray(R.array.username)
         name = resources.getStringArray(R.array.name)
         location = resources.getStringArray(R.array.location)
-        repository = resources.getStringArray(R.array.repository)
         company = resources.getStringArray(R.array.company)
-        followers = resources.getStringArray(R.array.followers)
+        repository = resources.getStringArray(R.array.repository)
         following = resources.getStringArray(R.array.following)
+        followers = resources.getStringArray(R.array.followers)
         avatar = resources.obtainTypedArray(R.array.avatar)
+
     }
 
     private fun addItem() {
         for (position in name.indices) {
             val user = User(
-                name[position],
+
                 userName[position],
-                avatar.getResourceId(position, -1),
+                name[position],
                 location[position],
                 repository[position],
-                followers[position],
+                company[position],
                 following[position],
-                company[position]
+                followers[position],
+                avatar.getResourceId(position, -1)
             )
             users.add(user)
         }
