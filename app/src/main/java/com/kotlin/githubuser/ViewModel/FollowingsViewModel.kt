@@ -18,18 +18,15 @@ import org.json.JSONObject
 
 class FollowingsViewModel : ViewModel(){
     private val listFollowing = ArrayList<User>()
-    private val mutableFollowing = MutableLiveData<ArrayList<User>>()
 
+    val mutableFollowing = MutableLiveData<ArrayList<User>>()
     companion object {
         private val TAG = FollowingsViewModel::class.java.simpleName
         private const val TOKEN = "token ${BuildConfig.API_KEY}"
     }
 
-    fun getFollowing(): LiveData<ArrayList<User>> {
-        return  mutableFollowing
-    }
+    fun getFollowing(context: Context, userName: String): LiveData<ArrayList<User>> {
 
-    fun setFollowing(context: Context, userName: String) {
         val url = "https://api.github.com/users/$userName/following"
 
         val client = AsyncHttpClient()
@@ -45,9 +42,9 @@ class FollowingsViewModel : ViewModel(){
                         val userName = jsonObject.getString("login")
                         getUserDetail(userName, context)
                     }
+                    Log.d(TAG, statusCode.toString())
 
                 } catch (e:Exception){
-                    Log.d(TAG, "Berhasil")
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }
@@ -64,7 +61,10 @@ class FollowingsViewModel : ViewModel(){
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
+
+        return  mutableFollowing
     }
+
 
     fun getUserDetail(login: String, context: Context) {
         val url = "https://api.github.com/users/$login"

@@ -9,16 +9,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.kotlin.githubuser.R
-import com.kotlin.githubuser.Data.Follow
 import com.kotlin.githubuser.Adapter.FollowerAdapter
-import com.kotlin.githubuser.Data.Follower
 import com.kotlin.githubuser.Data.User
 import com.kotlin.githubuser.ViewModel.FollowersViewModel
 import kotlinx.android.synthetic.main.fragment_followers.*
-import kotlinx.android.synthetic.main.item_user.*
 
 
 class FollowersFragment : Fragment() {
@@ -35,7 +30,6 @@ class FollowersFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_followers, container, false)
     }
 
@@ -48,11 +42,7 @@ class FollowersFragment : Fragment() {
 
         val user = activity!!.intent.getParcelableExtra(EXTRA_DETAIL) as? User
 
-
-
-        followerView.setFollowers(activity!!.applicationContext, user?.userName.toString())
-
-        followerView.getFollowers().observe(activity!!, Observer { listFollower->
+        followerView.getFollowers(activity!!.applicationContext, user?.userName.toString()).observe(activity!!, Observer { listFollower->
             if (listFollower != null){
                 adapter.setFollower(listFollower)
                 showLoading(false)

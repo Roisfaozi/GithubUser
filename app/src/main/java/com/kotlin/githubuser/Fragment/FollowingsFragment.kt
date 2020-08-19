@@ -48,17 +48,12 @@ class FollowingsFragment : Fragment() {
         val user = activity!!.intent.getParcelableExtra(EXTRA_DETAIL) as? User
 
 
-
-
-        followingView.setFollowing(activity!!.applicationContext, user?.userName.toString())
-        showLoading(true)
-
-        followingView.getFollowing().observe(activity!!, Observer { listFollowing->
+        followingView.getFollowing(activity!!.applicationContext, user?.userName.toString()).observe(activity!!, Observer { listFollowing->
             if (listFollowing != null){
                 adapter.setFollow(listFollowing)
                 showLoading(false)
             }
-        } )
+        })
         showRecycler()
 
     }

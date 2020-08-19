@@ -6,11 +6,8 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kotlin.githubuser.Data.Follow
 import com.kotlin.githubuser.BuildConfig
-import com.kotlin.githubuser.Data.Follower
 import com.kotlin.githubuser.Data.User
-import com.kotlin.githubuser.Fragment.FollowersFragment
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -26,11 +23,7 @@ class FollowersViewModel : ViewModel(){
         private const val TOKEN = "token ${BuildConfig.API_KEY}"
     }
 
-    fun getFollowers(): LiveData<ArrayList<User>>{
-        return mutableFollowers
-    }
-
-    fun setFollowers(context: Context, loginId: String){
+    fun getFollowers(context: Context, loginId: String): LiveData<ArrayList<User>>{
         val url = "https://api.github.com/users/$loginId/followers"
 
         val client = AsyncHttpClient()
@@ -42,11 +35,14 @@ class FollowersViewModel : ViewModel(){
 
                 try {
                     val jsonArray = JSONArray(result)
+
                     for (i in 0 until jsonArray.length()){
                         val jsonObject = jsonArray.getJSONObject(i)
                         val userLogin = jsonObject.getString("login")
                         getUserDetail(userLogin, context)
+
                         }
+
                     }catch (e:Exception){
                     Log.d(TAG, "Berhasill")
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
@@ -70,6 +66,7 @@ class FollowersViewModel : ViewModel(){
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
+        return mutableFollowers
     }
 
     fun getUserDetail(login: String, context: Context) {
