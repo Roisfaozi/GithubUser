@@ -20,33 +20,30 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@android:color/black" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/img_item_photo"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/TextPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/img_item_photo"
-        app:layout_constraintTop_toTopOf="@+id/img_item_photo">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/Name" />
 
-        <TextView
-            android:id="@+id/tv_item_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/TextPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            tools:text="@string/Name" />
+    <TextView
+        android:id="@+id/tv_item_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/TextSecondary"
+        app:layout_constraintStart_toEndOf="@+id/img_item_photo"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_name"
+        tools:text="@string/company" />
 
-        <TextView
-            android:id="@+id/tv_item_company"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:layout_marginTop="8dp"
-            android:maxLines="2"
-            android:textColor="@color/TextSecondary"
-            tools:text="@string/company" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

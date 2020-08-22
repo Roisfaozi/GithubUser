@@ -90,8 +90,8 @@ class FollowingsViewModel : ViewModel(){
                     user.avatar = jsonObject.getString("avatar_url")
                     listFollowing.add(user)
                     mutableFollowing.postValue(listFollowing)
+                    Log.d("hayo", listFollowing.toString())
                 } catch (e:Exception){
-                    Log.d(TAG, "Keno")
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }

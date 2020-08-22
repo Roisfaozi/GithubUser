@@ -16,15 +16,15 @@ import org.json.JSONObject
 
 class FollowersViewModel : ViewModel(){
     private val listFollowers = ArrayList<User>()
-    private val mutableFollowers = MutableLiveData<ArrayList<User>>()
 
+    val mutableFollowers = MutableLiveData<ArrayList<User>>()
     companion object {
         private val TAG = FollowersViewModel::class.java.simpleName
         private const val TOKEN = "token ${BuildConfig.API_KEY}"
     }
 
-    fun getFollowers(context: Context, loginId: String): LiveData<ArrayList<User>>{
-        val url = "https://api.github.com/users/$loginId/followers"
+    fun getFollowers(context: Context, userName: String): LiveData<ArrayList<User>>{
+        val url = "https://api.github.com/users/$userName/followers"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", TOKEN)
@@ -41,7 +41,7 @@ class FollowersViewModel : ViewModel(){
                         val userLogin = jsonObject.getString("login")
                         getUserDetail(userLogin, context)
 
-                        }
+                    }
 
                     }catch (e:Exception){
                     Log.d(TAG, "Berhasill")
@@ -82,20 +82,20 @@ class FollowersViewModel : ViewModel(){
 
                 try {
                     val jsonObject = JSONObject(result)
-                    val follow = User()
-                    follow.name = jsonObject.getString("name")
-                    follow.userName = jsonObject.getString("login")
-                    follow.location = jsonObject.getString("location")
-                    follow.repository = jsonObject.getString("public_repos")
-                    follow.company = jsonObject.getString("company")
-                    follow.following = jsonObject.getString("following")
-                    follow.followers = jsonObject.getString("followers")
-                    follow.avatar = jsonObject.getString("avatar_url")
-                    listFollowers.add(User())
+                    val user = User()
+                    user.name = jsonObject.getString("name")
+                    user.userName = jsonObject.getString("login")
+                    user.location = jsonObject.getString("location")
+                    user.repository = jsonObject.getString("public_repos")
+                    user.company = jsonObject.getString("company")
+                    user.following = jsonObject.getString("following")
+                    user.followers = jsonObject.getString("followers")
+                    user.avatar = jsonObject.getString("avatar_url")
+                    listFollowers.add(user)
                     mutableFollowers.postValue(listFollowers)
 
                 } catch (e:Exception){
-                    Log.d(TAG, "iso")
+                    Log.d("cari", e.toString())
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }
@@ -113,7 +113,7 @@ class FollowersViewModel : ViewModel(){
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error.message}"
                 }
-                Log.d(TAG, "Ra iso")
+                Log.d("ceklis", statusCode.toString())
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })

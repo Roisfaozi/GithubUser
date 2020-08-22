@@ -26,8 +26,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_avatar"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/left"
                 app:layout_constraintBottom_toTopOf="@+id/tabs"
