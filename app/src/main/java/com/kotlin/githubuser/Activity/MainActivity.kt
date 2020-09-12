@@ -11,7 +11,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kotlin.githubuser.Adapter.UserAdapter
+import com.kotlin.githubuser.adapter.UserAdapter
 import com.kotlin.githubuser.Data.User
 import com.kotlin.githubuser.R
 import com.kotlin.githubuser.ViewModel.MainViewModel
@@ -24,10 +24,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel: MainViewModel
 
     private var users : ArrayList<User> = ArrayList()
-
-    companion object {
-        val TAG = MainActivity::class.java.simpleName
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,8 +76,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun showRecyclerView() {
-        val layoutManager = LinearLayoutManager(this)
-        rv_user.setLayoutManager(layoutManager)
+        rv_user.layoutManager = LinearLayoutManager(this)
         rv_user.setHasFixedSize(true)
 
         userAdapter.notifyDataSetChanged()

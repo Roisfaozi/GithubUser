@@ -7,8 +7,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kotlin.githubuser.BuildConfig
-import com.kotlin.githubuser.Fragment.FollowingsFragment
-import com.kotlin.githubuser.Data.Follow
 import com.kotlin.githubuser.Data.User
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler

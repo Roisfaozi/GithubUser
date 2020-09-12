@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Adapter
+package com.kotlin.githubuser.adapter
 
 import android.content.Context
 import androidx.annotation.Nullable
@@ -27,7 +27,7 @@ class SectionPagerAdapter (private val mContext : Context, fm: FragmentManager) 
         return fragment as Fragment
     }
 
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = TAB_TITLES.size
 
     @Nullable
     override fun getPageTitle(position: Int): CharSequence? {

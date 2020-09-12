@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Adapter
+package com.kotlin.githubuser.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kotlin.githubuser.Activity.DetailActivity
-import com.kotlin.githubuser.Data.Follow
-import com.kotlin.githubuser.Data.Follower
 import com.kotlin.githubuser.Data.User
 import com.kotlin.githubuser.R
 import kotlinx.android.synthetic.main.item_user.view.*
@@ -47,7 +45,7 @@ class FollowingAdapter(private val listFollow : ArrayList<User>) :RecyclerView.A
 
     override fun getItemCount(): Int = listFollow.size
 
-    override fun onBindViewHolder(holder: FollowingAdapter.ListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         holder.bind(listFollow[position])
 
         val user = listFollow[position]

@@ -10,12 +10,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.githubuser.R
-import com.kotlin.githubuser.Data.Follow
-import com.kotlin.githubuser.Adapter.FollowingAdapter
+import com.kotlin.githubuser.adapter.FollowingAdapter
 import com.kotlin.githubuser.Data.User
 import com.kotlin.githubuser.ViewModel.FollowingsViewModel
 import kotlinx.android.synthetic.main.fragment_followings.*
-import kotlinx.android.synthetic.main.item_user.*
 
 
 class FollowingsFragment : Fragment() {
@@ -45,7 +43,7 @@ class FollowingsFragment : Fragment() {
         adapter= FollowingAdapter(listFollow)
         rv_followings.adapter =adapter
 
-        val user = activity!!.intent.getParcelableExtra(EXTRA_DETAIL) as? User
+        val user = activity?.intent?.getParcelableExtra(EXTRA_DETAIL) as? User
 
 
         followingView.getFollowing(activity!!.applicationContext, user?.userName.toString()).observe(activity!!, Observer { listFollowing->

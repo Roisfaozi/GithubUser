@@ -93,6 +93,7 @@ class MainViewModel : ViewModel() {
                     user.following = jsonObject.getString("following")
                     user.followers = jsonObject.getString("followers")
                     user.avatar = jsonObject.getString("avatar_url")
+                    user.id = jsonObject.getInt("id")
                     listUser.add(user)
                     mutableListUser.postValue(listUser)
                 } catch (e:Exception){

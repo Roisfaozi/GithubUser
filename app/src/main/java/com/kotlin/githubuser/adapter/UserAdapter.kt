@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Adapter
+package com.kotlin.githubuser.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater

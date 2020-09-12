@@ -15,4 +15,8 @@
     <string name="change_language">Change Language</string>
     <string name="tab_text_1">Mengikuti</string>
     <string name="tab_text_2">Pengikut</string>
+    <string name="favorite_removed">Favorite dihapus</string>
+    <string name="favorite_added">Favorite ditambahkan</string>
+    <string name="favorite">Favorit</string>
+    <string name="empty_favorit">Favorit Kosong</string>
 </resources>
