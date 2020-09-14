@@ -12,10 +12,10 @@ internal class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATAB
         private const val DATABASE_VERSION = 1
 
         private val SQL_CREATE_TABLE_FAV = "CREATE TABLE $TABLE_NAME" +
-                "(${DatabaseContract.FavoriteColumns._ID} INTEGER PRIMARY KEY AUTOINCREAMENT," +
-                " ${DatabaseContract.FavoriteColumns.NAME} INTEGER NOT NULL." +
-                "${DatabaseContract.FavoriteColumns.AVATAR} INTEGER NOT NULL," +
-                "${DatabaseContract.FavoriteColumns.COMPANY} INTEGET NOT NULL"
+                "(${DatabaseContract.FavoriteColumns._ID} INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " ${DatabaseContract.FavoriteColumns.NAME} TEXT NOT NULL," +
+                "${DatabaseContract.FavoriteColumns.AVATAR} TEXT NOT NULL," +
+                "${DatabaseContract.FavoriteColumns.COMPANY} TEXT NOT NULL)"
 
         private const val SQL_DROP_TABLE_FAV = "DROP TABLE IF EXISTS $TABLE_NAME"
     }

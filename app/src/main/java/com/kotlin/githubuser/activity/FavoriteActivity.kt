@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Activity
+package com.kotlin.githubuser.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

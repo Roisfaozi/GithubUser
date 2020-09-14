@@ -5,8 +5,8 @@ import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.kotlin.githubuser.Fragment.FollowersFragment
-import com.kotlin.githubuser.Fragment.FollowingsFragment
+import com.kotlin.githubuser.fragment.FollowersFragment
+import com.kotlin.githubuser.fragment.FollowingsFragment
 import com.kotlin.githubuser.R
 
 class SectionPagerAdapter (private val mContext : Context, fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {

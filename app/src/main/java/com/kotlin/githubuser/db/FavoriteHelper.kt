@@ -13,8 +13,8 @@ class FavoriteHelper (context: Context) {
     companion object{
         private const val DATABASE_TABLE = TABLE_NAME
         private lateinit var databaseHelper: DatabaseHelper
-        private var INSTANCE: FavoriteHelper? = null
         private lateinit var database: SQLiteDatabase
+        private var INSTANCE: FavoriteHelper? = null
 
         fun getInstance(context: Context): FavoriteHelper = INSTANCE ?: synchronized(this){
             INSTANCE ?: FavoriteHelper(context)
@@ -28,6 +28,12 @@ class FavoriteHelper (context: Context) {
     @Throws(SQLException::class)
     fun open(){
         database = databaseHelper.writableDatabase
+    }
+
+    fun close() {
+        databaseHelper.close()
+        if (database.isOpen)
+            database.close()
     }
 
 

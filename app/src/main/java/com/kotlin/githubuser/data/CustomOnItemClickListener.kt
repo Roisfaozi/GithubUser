@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Data
+package com.kotlin.githubuser.data
 
 import android.view.View
 

@@ -2,7 +2,7 @@ package com.kotlin.githubuser.helper
 
 import android.database.Cursor
 import android.util.Log
-import com.kotlin.githubuser.Data.User
+import com.kotlin.githubuser.data.User
 import com.kotlin.githubuser.db.DatabaseContract
 
 object MappingHelper {

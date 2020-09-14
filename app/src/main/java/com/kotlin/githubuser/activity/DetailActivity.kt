@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Activity
+package com.kotlin.githubuser.activity
 
 import android.content.ContentValues
 import android.database.Cursor
@@ -11,7 +11,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.kotlin.githubuser.adapter.SectionPagerAdapter
-import com.kotlin.githubuser.Data.User
+import com.kotlin.githubuser.data.User
 import com.kotlin.githubuser.R
 import com.kotlin.githubuser.db.DatabaseContract
 import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.CONTENT_URI
@@ -23,9 +23,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 class DetailActivity : AppCompatActivity() {
 
     private var isFavorite = false
-    private var menu: Menu? = null
     private var dataUser: User? = null
-    private var datafav: User? = null
     private var fromFavorite: String? = null
     private var fromMainActivity: String? = null
     private lateinit var uriWithId: Uri
@@ -94,16 +92,15 @@ class DetailActivity : AppCompatActivity() {
         if(isFavorite){
            contentResolver.delete(uriWithId, null, null)
             Log.d(TAG, R.string.favorite_removed.toString())
-            showMessage("${datafav?.name} ${R.string.favorite_added}")
+            showMessage("${dataUser?.name} ${R.string.favorite_added}")
         } else {
             val values = ContentValues()
-            values.put(DatabaseContract.FavoriteColumns._ID, dataUser?.id)
             values.put(DatabaseContract.FavoriteColumns.NAME, dataUser?.name)
             values.put(DatabaseContract.FavoriteColumns.AVATAR, dataUser?.avatar)
             values.put(DatabaseContract.FavoriteColumns.COMPANY, dataUser?.company)
             contentResolver.insert(CONTENT_URI, values)
             Log.d(TAG, "Insert: $values")
-            showMessage("${datafav?.name} ${R.string.favorite_added}")
+            showMessage("${dataUser?.name} ${R.string.favorite_added}")
         }
     }
 

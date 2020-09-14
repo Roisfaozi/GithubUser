@@ -31,9 +31,9 @@
             android:enabled="true"
             android:exported="true"></provider>
 
-        <activity android:name=".Activity.FavoriteActivity" />
-        <activity android:name=".Activity.DetailActivity" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name="com.kotlin.githubuser.activity.FavoriteActivity" />
+        <activity android:name="com.kotlin.githubuser.activity.DetailActivity" />
+        <activity android:name="com.kotlin.githubuser.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

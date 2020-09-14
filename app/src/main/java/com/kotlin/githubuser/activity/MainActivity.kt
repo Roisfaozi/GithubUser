@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Activity
+package com.kotlin.githubuser.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +12,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.githubuser.adapter.UserAdapter
-import com.kotlin.githubuser.Data.User
+import com.kotlin.githubuser.data.User
 import com.kotlin.githubuser.R
-import com.kotlin.githubuser.ViewModel.MainViewModel
+import com.kotlin.githubuser.viewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

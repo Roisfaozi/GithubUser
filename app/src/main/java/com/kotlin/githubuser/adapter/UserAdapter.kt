@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kotlin.githubuser.Data.User
-import com.kotlin.githubuser.Activity.DetailActivity
+import com.kotlin.githubuser.data.User
+import com.kotlin.githubuser.activity.DetailActivity
 import com.kotlin.githubuser.R
 import kotlinx.android.synthetic.main.item_user.view.*
 

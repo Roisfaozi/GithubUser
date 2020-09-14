@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kotlin.githubuser.Activity.DetailActivity
-import com.kotlin.githubuser.Data.CustomOnItemClickListener
-import com.kotlin.githubuser.Data.User
+import com.kotlin.githubuser.activity.DetailActivity
+import com.kotlin.githubuser.data.CustomOnItemClickListener
+import com.kotlin.githubuser.data.User
 import com.kotlin.githubuser.R
 import kotlinx.android.synthetic.main.item_user.view.*
 
@@ -29,7 +29,7 @@ class FavoritAdapter(private val activity: Activity): RecyclerView.Adapter<Favor
 
     fun addItem(user:User){
         this.listFav.add(user)
-        notifyItemInserted(this.listFav.size -1)
+        notifyItemInserted(this.listFav.size - 1)
     }
 
     fun removeItem(position: Int){

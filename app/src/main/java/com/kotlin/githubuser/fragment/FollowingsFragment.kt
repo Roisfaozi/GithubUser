@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.Fragment
+package com.kotlin.githubuser.fragment
 
 
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kotlin.githubuser.R
 import com.kotlin.githubuser.adapter.FollowingAdapter
-import com.kotlin.githubuser.Data.User
-import com.kotlin.githubuser.ViewModel.FollowingsViewModel
+import com.kotlin.githubuser.data.User
+import com.kotlin.githubuser.viewModel.FollowingsViewModel
 import kotlinx.android.synthetic.main.fragment_followings.*
 
 

@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.ViewModel
+package com.kotlin.githubuser.viewModel
 
 import android.content.Context
 import android.util.Log
@@ -7,55 +7,48 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kotlin.githubuser.BuildConfig
-import com.kotlin.githubuser.Data.User
+import com.kotlin.githubuser.data.User
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
 import org.json.JSONArray
 import org.json.JSONObject
 
-class FollowersViewModel : ViewModel(){
-    private val listFollowers = ArrayList<User>()
+class FollowingsViewModel : ViewModel(){
+    private val listFollowing = ArrayList<User>()
 
-    val mutableFollowers = MutableLiveData<ArrayList<User>>()
+    val mutableFollowing = MutableLiveData<ArrayList<User>>()
     companion object {
-        private val TAG = FollowersViewModel::class.java.simpleName
+        private val TAG = FollowingsViewModel::class.java.simpleName
         private const val TOKEN = "token ${BuildConfig.API_KEY}"
     }
 
-    fun getFollowers(context: Context, userName: String): LiveData<ArrayList<User>>{
-        val url = "https://api.github.com/users/$userName/followers"
+    fun getFollowing(context: Context, userName: String): LiveData<ArrayList<User>> {
+
+        val url = "https://api.github.com/users/$userName/following"
 
         val client = AsyncHttpClient()
         client.addHeader("Authorization", TOKEN)
         client.addHeader("User-agent", "request")
-        client.get(url, object : AsyncHttpResponseHandler(){
-            override fun onSuccess(succsessCode: Int, headers: Array<Header>, responseBody: ByteArray) {
+        client.get(url, object: AsyncHttpResponseHandler(){
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseBody: ByteArray) {
                 val result = String(responseBody)
-
                 try {
                     val jsonArray = JSONArray(result)
-
-                    for (i in 0 until jsonArray.length()){
+                    for (i in 0 until jsonArray.length()) {
                         val jsonObject = jsonArray.getJSONObject(i)
-                        val userLogin = jsonObject.getString("login")
-                        getUserDetail(userLogin, context)
-
+                        val userName = jsonObject.getString("login")
+                        getUserDetail(userName, context)
                     }
+                    Log.d(TAG, statusCode.toString())
 
-                    }catch (e:Exception){
-                    Log.d(TAG, "Berhasill")
+                } catch (e:Exception){
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<out Header>,
-                responseBody: ByteArray,
-                error: Throwable
-            ) {
+            override fun onFailure( statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
                 val errorMessage = when (statusCode) {
                     401 -> "$statusCode : Bad Request"
                     403 -> "$statusCode : Forbidden"
@@ -66,8 +59,10 @@ class FollowersViewModel : ViewModel(){
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
-        return mutableFollowers
+
+        return  mutableFollowing
     }
+
 
     fun getUserDetail(login: String, context: Context) {
         val url = "https://api.github.com/users/$login"
@@ -91,11 +86,10 @@ class FollowersViewModel : ViewModel(){
                     user.following = jsonObject.getString("following")
                     user.followers = jsonObject.getString("followers")
                     user.avatar = jsonObject.getString("avatar_url")
-                    listFollowers.add(user)
-                    mutableFollowers.postValue(listFollowers)
-
+                    listFollowing.add(user)
+                    mutableFollowing.postValue(listFollowing)
+                    Log.d("hayo", listFollowing.toString())
                 } catch (e:Exception){
-                    Log.d("cari", e.toString())
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }
@@ -113,7 +107,7 @@ class FollowersViewModel : ViewModel(){
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error.message}"
                 }
-                Log.d("ceklis", statusCode.toString())
+                Log.d(TAG, "Ra Keno")
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })

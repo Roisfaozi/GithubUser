@@ -1,4 +1,4 @@
-package com.kotlin.githubuser.ViewModel
+package com.kotlin.githubuser.viewModel
 
 import android.content.Context
 import android.util.Log
@@ -6,9 +6,8 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.kotlin.githubuser.Activity.MainActivity
 import com.kotlin.githubuser.BuildConfig
-import com.kotlin.githubuser.Data.User
+import com.kotlin.githubuser.data.User
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -141,7 +140,7 @@ class MainViewModel : ViewModel() {
                         getUserDetail(username, context)
                     }
                 } catch (e:Exception) {
-                    Log.d(EXTRA, "Sukses: ${e.message}")
+                    Log.d("ini", "Sukses: ${e.message}")
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
                 }
