@@ -49,12 +49,12 @@ class FavoriteHelper (context: Context) {
         )
     }
 
-    fun queryById(Id: String): Cursor {
+    fun queryById(id: String): Cursor {
         return database.query(
             DATABASE_TABLE,
             null,
             "$_ID=?",
-            arrayOf(Id),
+            arrayOf(id),
             null,
             null,
             null,

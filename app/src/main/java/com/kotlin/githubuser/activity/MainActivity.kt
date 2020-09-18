@@ -37,6 +37,11 @@ class MainActivity : AppCompatActivity() {
         getUserSearch()
 
         mainViewModel(userAdapter)
+
+        favoriteActivity.setOnClickListener {
+            val move = Intent(this, FavoriteActivity::class.java)
+            startActivity(move)
+        }
     }
 
     private fun mainViewModel(adapter: UserAdapter){
