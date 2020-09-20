@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.TABLE_NAME
+import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.NAME
+import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.USERNAME
 import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion._ID
 import java.sql.SQLException
 
@@ -45,7 +47,7 @@ class FavoriteHelper (context: Context) {
             null,
             null,
             null,
-            "$_ID ASC"
+            "$NAME ASC"
         )
     }
 
@@ -53,7 +55,7 @@ class FavoriteHelper (context: Context) {
         return database.query(
             DATABASE_TABLE,
             null,
-            "$_ID=?",
+            "$NAME=?",
             arrayOf(id),
             null,
             null,
@@ -67,12 +69,12 @@ class FavoriteHelper (context: Context) {
     }
 
     fun deleteById(id:String): Int{
-        return database.delete(DATABASE_TABLE, "$_ID = '$id", null)
+        return database.delete(DATABASE_TABLE, "$USERNAME = '$id'", null)
     }
 
     fun update(id: String, values: ContentValues?): Int{
         open()
-        return database.update(DATABASE_TABLE, values, "$_ID = ?", arrayOf(id))
+        return database.update(DATABASE_TABLE, values, "$NAME = ?", arrayOf(id))
     }
 
 }

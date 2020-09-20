@@ -48,14 +48,14 @@ class FollowingsViewModel : ViewModel(){
                 }
             }
 
-            override fun onFailure( statusCode: Int, headers: Array<Header>, responseBody: ByteArray, error: Throwable) {
+            override fun onFailure( statusCode: Int, headers: Array<Header>?, responseBody: ByteArray?, error: Throwable) {
                 val errorMessage = when (statusCode) {
                     401 -> "$statusCode : Bad Request"
                     403 -> "$statusCode : Forbidden"
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error.message}"
                 }
-                Log.d(TAG, "Gagal")
+                Log.d(TAG, errorMessage)
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
@@ -97,8 +97,8 @@ class FollowingsViewModel : ViewModel(){
 
             override fun onFailure(
                 statusCode: Int,
-                headers: Array<out Header>,
-                responseBody: ByteArray,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
                 error: Throwable
             ) {
                 val errorMessage = when (statusCode) {

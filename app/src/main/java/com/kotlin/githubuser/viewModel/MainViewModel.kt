@@ -53,8 +53,8 @@ class MainViewModel : ViewModel() {
 
             override fun onFailure(
                 statusCode: Int,
-                headers: Array<out Header>,
-                responseBody: ByteArray,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
                 error: Throwable
             ) {
                 val errorMessage = when (statusCode) {
@@ -63,7 +63,7 @@ class MainViewModel : ViewModel() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error.message}"
                 }
-                Log.d(EXTRA, errorMessage)
+                Log.d("pengguna", errorMessage)
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
@@ -104,8 +104,8 @@ class MainViewModel : ViewModel() {
 
             override fun onFailure(
                 statusCode: Int,
-                headers: Array<out Header>,
-                responseBody: ByteArray,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
                 error: Throwable
             ) {
                 val errorMessage = when (statusCode) {
@@ -114,7 +114,7 @@ class MainViewModel : ViewModel() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error.message}"
                 }
-                Log.d(EXTRA, "onFailure: ${errorMessage}")
+                Log.d("rinci", "onFailure: ${errorMessage}")
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
@@ -148,8 +148,8 @@ class MainViewModel : ViewModel() {
 
             override fun onFailure(
                 statusCode: Int,
-                headers: Array<out Header>,
-                responseBody: ByteArray,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
                 error: Throwable
             ) {
                 val errorMessage = when (statusCode) {
@@ -158,7 +158,7 @@ class MainViewModel : ViewModel() {
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error.message}"
                 }
-                Log.d(EXTRA, "Gagal: ${errorMessage}")
+                Log.d("cari", "Gagal: ${errorMessage}")
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })

@@ -15,6 +15,7 @@ import com.kotlin.githubuser.data.User
 import com.kotlin.githubuser.R
 import com.kotlin.githubuser.db.DatabaseContract
 import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.CONTENT_URI
+import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.NAME
 import com.kotlin.githubuser.db.FavoriteHelper
 import com.kotlin.githubuser.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -32,7 +33,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         internal val TAG = DetailActivity::class.java.simpleName
         const val EXTRA_DETAIL = "extra_detail"
         const val EXTRA_FAV = "extra_fav"
-        const val EXTRA_STATE = "extra_state"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +51,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         val cursor: Cursor = favoriteHelper.queryById(intent.id.toString())
         if (cursor.moveToNext()){
             isFavorite = true
-            favoriteStatus(true)
+            favoriteStatus(isFavorite)
         }
 
         setUser()
@@ -110,24 +110,33 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         val intentFav = intent.getParcelableExtra(EXTRA_DETAIL) as User
         when(v?.id) {
             R.id.favorite -> {
-                if(isFavorite){
-                    val favId = intentFav.userName.toString()
-                    favoriteHelper.deleteById(favId)
-                    Log.d(TAG, R.string.favorite_removed.toString())
-                    showMessage("${dataUser?.name} ${R.string.favorite_added}")
-                    favoriteStatus(false)
-                    isFavorite = true
-                } else {
+                if(!isFavorite){
                     val values = ContentValues()
                     values.put(DatabaseContract.FavoriteColumns.NAME, intentFav.name)
                     values.put(DatabaseContract.FavoriteColumns.AVATAR, intentFav.avatar)
                     values.put(DatabaseContract.FavoriteColumns.COMPANY, intentFav.company)
-
-                    isFavorite = false
+                    values.put(DatabaseContract.FavoriteColumns.LOCATION, intentFav.location)
+                    values.put(DatabaseContract.FavoriteColumns.REPOSITORY, intentFav.repository)
+                    values.put(DatabaseContract.FavoriteColumns.FOLLOWING, intentFav.following)
+                    values.put(DatabaseContract.FavoriteColumns.FOLLOWERS, intentFav.followers)
+                    values.put(DatabaseContract.FavoriteColumns.USERNAME, intentFav.userName)
                     contentResolver.insert(CONTENT_URI, values)
+                    isFavorite = !isFavorite
+                    favoriteStatus(isFavorite)
                     Log.d("coba", "Insert: $values")
-                    showMessage("${dataUser?.name} ${R.string.favorite_added}")
-                    favoriteStatus(true)
+                    showMessage("${intentFav.name} Favorite")
+
+
+                } else {
+                    val namFav =intentFav.userName.toString()
+                    favoriteHelper.deleteById(namFav)
+//                    uriWithId = Uri.parse("$CONTENT_URI/$NAME")
+//                    contentResolver.delete(uriWithId, null, null)
+                    Log.d("Uri", "$favoriteHelper")
+                    isFavorite = !isFavorite
+                    favoriteStatus(isFavorite)
+                    Log.d("delete", "data terhapus")
+                    showMessage("${intentFav.name} ${R.string.favorite_added}")
                 }
             }
         }

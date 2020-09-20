@@ -62,7 +62,7 @@ class FollowersViewModel : ViewModel(){
                     404 -> "$statusCode : Not Found"
                     else -> "$statusCode : ${error.message}"
                 }
-                Log.d(TAG, "Gagal")
+                Log.d(TAG, errorMessage)
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
             }
         })
