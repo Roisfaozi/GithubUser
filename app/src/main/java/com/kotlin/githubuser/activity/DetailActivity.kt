@@ -16,6 +16,7 @@ import com.kotlin.githubuser.R
 import com.kotlin.githubuser.db.DatabaseContract
 import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.CONTENT_URI
 import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.NAME
+import com.kotlin.githubuser.db.DatabaseContract.FavoriteColumns.Companion.USERNAME
 import com.kotlin.githubuser.db.FavoriteHelper
 import com.kotlin.githubuser.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -43,12 +44,14 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         favoriteHelper= FavoriteHelper.getInstance(applicationContext)
         favoriteHelper.open()
 
-        uriWithId = Uri.parse(CONTENT_URI.toString() + "/" + dataUser?.id)
+        val intent = intent.getParcelableExtra(EXTRA_DETAIL) as User
+        uriWithId = Uri.parse(CONTENT_URI.toString() + "/" + intent.userName)
+        Log.d("iniloh", "ck: $uriWithId")
         val userFav = contentResolver?.query(uriWithId, null, null, null, null)
         checkFavorite(userFav)
+        Log.d("inikak", "ck: ${checkFavorite(userFav)}")
 
-        val intent = intent.getParcelableExtra(EXTRA_DETAIL) as User
-        val cursor: Cursor = favoriteHelper.queryById(intent.id.toString())
+        val cursor: Cursor = favoriteHelper.queryById(intent.userName.toString())
         if (cursor.moveToNext()){
             isFavorite = true
             favoriteStatus(isFavorite)
@@ -100,8 +103,9 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         for(data in favObject){
             if(this.dataUser?.id == data.id){
                 Log.d("ini", "cekFav favObject: $favObject")
-                Log.d("ini", "cekData data: $data")
+                Log.d("inisih", "cekData data: $data")
                 isFavorite= true
+                Log.d("inikan", "cekData fav: $isFavorite")
             }
         }
     }
@@ -130,8 +134,8 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     val namFav =intentFav.userName.toString()
                     favoriteHelper.deleteById(namFav)
-//                    uriWithId = Uri.parse("$CONTENT_URI/$NAME")
-//                    contentResolver.delete(uriWithId, null, null)
+                    uriWithId = Uri.parse("$CONTENT_URI/$USERNAME")
+                    contentResolver.delete(uriWithId, null, null)
                     Log.d("Uri", "$favoriteHelper")
                     isFavorite = !isFavorite
                     favoriteStatus(isFavorite)

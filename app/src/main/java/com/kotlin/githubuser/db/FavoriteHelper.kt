@@ -55,7 +55,7 @@ class FavoriteHelper (context: Context) {
         return database.query(
             DATABASE_TABLE,
             null,
-            "$NAME=?",
+            "$USERNAME=?",
             arrayOf(id),
             null,
             null,

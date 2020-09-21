@@ -22,13 +22,13 @@ internal class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATAB
 
         private val SQL_CREATE_TABLE_FAV = "CREATE TABLE $TABLE_NAME" +
                 "($_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                " $NAME TEXT NOT NULL UNIQUE," +
+                " $NAME TEXT NOT NULL," +
                 " $AVATAR TEXT NOT NULL," +
                 " $COMPANY TEXT NOT NULL," +
                 " $LOCATION TEXT NOT NULL," +
                 " $REPOSITORY TEXT NOT NULL," +
                 " $FOLLOWERS TEXT NOT NULL," +
-                " $USERNAME TEXT NOT NULL," +
+                " $USERNAME TEXT NOT NULL UNIQUE," +
                 " $FOLLOWING TEXT NOT NULL)"
 
         private const val SQL_DROP_TABLE_FAV = "DROP TABLE IF EXISTS $TABLE_NAME"

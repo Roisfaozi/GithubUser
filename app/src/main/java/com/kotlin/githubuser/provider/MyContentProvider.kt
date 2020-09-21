@@ -22,7 +22,7 @@ class MyContentProvider : ContentProvider() {
         init{
 
             sUriMatcher.addURI(AUTHORITY, TABLE_NAME, FAV)
-            sUriMatcher.addURI(AUTHORITY, "$TABLE_NAME/#", FAV_ID)
+            sUriMatcher.addURI(AUTHORITY, "$TABLE_NAME/*", FAV_ID)
         }
     }
 
