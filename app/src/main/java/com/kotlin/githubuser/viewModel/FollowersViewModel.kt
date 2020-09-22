@@ -103,8 +103,8 @@ class FollowersViewModel : ViewModel(){
 
             override fun onFailure(
                 statusCode: Int,
-                headers: Array<out Header>,
-                responseBody: ByteArray,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
                 error: Throwable
             ) {
                 val errorMessage = when (statusCode) {

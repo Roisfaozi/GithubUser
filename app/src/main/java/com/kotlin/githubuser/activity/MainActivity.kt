@@ -3,7 +3,6 @@ package com.kotlin.githubuser.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -42,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             val move = Intent(this, FavoriteActivity::class.java)
             startActivity(move)
         }
+
     }
 
     private fun mainViewModel(adapter: UserAdapter){
@@ -94,8 +94,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.language_setting) {
-            val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+        if (item.itemId == R.id.setting) {
+            val mIntent = Intent(this, SettingsActivity::class.java)
             startActivity(mIntent)
         }
         return super.onOptionsItemSelected(item)

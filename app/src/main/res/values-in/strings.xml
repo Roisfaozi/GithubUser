@@ -19,4 +19,14 @@
     <string name="favorite_added">Favorite ditambahkan</string>
     <string name="favorite">Favorit</string>
     <string name="empty_favorit">Favorit Kosong</string>
+
+    <string name="change_language_settings">Ganti Bahasa</string>
+    <string name="daily_reminder">Pengingat Rutin</string>
+    <string name="daily_message">Cari hal baru di Github</string>
+
+    <string name="settings">Pengaturan</string>
+
+    <string name="reminder_active">"Pengingat Rutin Aktif"</string>
+    <string name="reminder_of">"Pengingat Rutin Mati"</string>
+
 </resources>

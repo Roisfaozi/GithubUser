@@ -1,11 +1,13 @@
 package com.kotlin.githubuser.activity
 
 import android.content.ContentValues
+import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -31,7 +33,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var uriWithId: Uri
 
     companion object {
-        internal val TAG = DetailActivity::class.java.simpleName
         const val EXTRA_DETAIL = "extra_detail"
         const val EXTRA_FAV = "extra_fav"
     }
@@ -39,6 +40,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        supportActionBar?.title= dataUser?.name
 
 
         favoriteHelper= FavoriteHelper.getInstance(applicationContext)
@@ -128,7 +130,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                     isFavorite = !isFavorite
                     favoriteStatus(isFavorite)
                     Log.d("coba", "Insert: $values")
-                    showMessage("${intentFav.name} Favorite")
+                    showMessage("${intentFav.name} ${getString(R.string.favorite_added)}")
 
 
                 } else {
@@ -140,9 +142,18 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                     isFavorite = !isFavorite
                     favoriteStatus(isFavorite)
                     Log.d("delete", "data terhapus")
-                    showMessage("${intentFav.name} ${R.string.favorite_added}")
+                    showMessage("${intentFav.name} ${getString(R.string.favorite_removed)}")
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val i = Intent(this@DetailActivity, MainActivity::class.java)
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+        finish()
     }
 }

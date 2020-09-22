@@ -44,6 +44,11 @@ class FavoriteActivity : AppCompatActivity() {
         showRecycler()
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
     private fun showRecycler(){
         rv_favorite.adapter = adapter
         rv_favorite.layoutManager = LinearLayoutManager(this)

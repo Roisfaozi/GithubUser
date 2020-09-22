@@ -19,4 +19,12 @@
     <string name="favorite">Favorite</string>
     <string name="empty_favorit">Favorite Empty</string>
 
+    <string name="change_language_settings">Change Language</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="daily_message">Find new popular on Github</string>
+    <string name="settings">Settings</string>
+
+    <string name="reminder_active">"Daily Reminder is Active"</string>
+    <string name="reminder_of">"Daily Reminder Of"</string>
+
 </resources>
