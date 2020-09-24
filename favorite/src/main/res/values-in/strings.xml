@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Favorite</string>
+    <string name="user_name">Nama Pengguna</string>
+    <string name="company">Perusahaan</string>
+    <string name="Name">Nama</string>
+    <string name="search">Cari disini…</string>
+
+</resources>

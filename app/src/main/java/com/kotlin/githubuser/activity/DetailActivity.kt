@@ -40,7 +40,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-        supportActionBar?.title= dataUser?.name
+        supportActionBar?.title= "Profile"
 
 
         favoriteHelper= FavoriteHelper.getInstance(applicationContext)

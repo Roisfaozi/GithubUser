@@ -78,7 +78,7 @@ class AlarmReciever : BroadcastReceiver(){
 
         val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEAT, intent, 0)
         val calendar = Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, 22)
+            set(Calendar.HOUR_OF_DAY, 9)
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
         }

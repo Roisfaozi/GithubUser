@@ -1,7 +1,6 @@
-package com.kotlin.githubuser.adapter
+package com.raven.favorite.adapter
 
-import android.app.Activity
-import android.content.Intent
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +8,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.kotlin.githubuser.activity.DetailActivity
-import com.kotlin.githubuser.data.CustomOnItemClickListener
 import com.kotlin.githubuser.data.User
-import com.kotlin.githubuser.R
+import com.raven.favorite.R
 import kotlinx.android.synthetic.main.item_user.view.*
 
-class FavoritAdapter(private val activity: Activity): RecyclerView.Adapter<FavoritAdapter.FavViewHolder>(){
+class FavoritAdapter : RecyclerView.Adapter<FavoritAdapter.FavViewHolder>(){
 
     val TAG = FavoritAdapter::class.java.simpleName
     var listFav = ArrayList<User>()
@@ -26,6 +23,7 @@ class FavoritAdapter(private val activity: Activity): RecyclerView.Adapter<Favor
         this.listFav.addAll(listFav)
         notifyDataSetChanged()
     }
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavViewHolder {
@@ -51,17 +49,7 @@ class FavoritAdapter(private val activity: Activity): RecyclerView.Adapter<Favor
 
                 Log.d(TAG, user.toString())
 
-                rvUser.setOnClickListener(
-                    CustomOnItemClickListener(adapterPosition,
-                        object : CustomOnItemClickListener.OnItemClickCallback {
-                            override fun onItemClicked(view: View, position: Int) {
-                                val intent = Intent(activity, DetailActivity::class.java)
-                                intent.putExtra(DetailActivity.EXTRA_DETAIL, user)
-                                intent.putExtra(DetailActivity.EXTRA_FAV, "favorite")
-                                activity.startActivity(intent)
-                            }
-                        })
-                )
+
             }
         }
     }

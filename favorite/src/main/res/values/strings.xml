@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Favorite</string>
+    <string name="user_name">Username</string>
+    <string name="company">Company</string>
+    <string name="Name">Name</string>
+    <string name="search">Search here…</string>
+
+</resources>

@@ -4,6 +4,8 @@
     package="com.kotlin.githubuser">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.dicoding.picodiploma.mynotesapp.READ_DATABASE" />
+    <uses-permission android:name="com.dicoding.picodiploma.mynotesapp.WRITE_DATABASE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -40,7 +42,8 @@
             android:parentActivityName=".activity.MainActivity" />
         <activity
             android:name=".activity.DetailActivity"
-            android:parentActivityName=".activity.MainActivity" />
+            android:parentActivityName=".activity.MainActivity"
+            android:noHistory="true"/>
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
